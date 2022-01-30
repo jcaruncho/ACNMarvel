@@ -8,7 +8,6 @@ export const initialState: Array<Heroe> = [];
 export const heroesReducer = createReducer(
     initialState,
     on(setHeroes, (state, data) => {
-        console.log(data);
         return {
             ...state,
             heroes: data
