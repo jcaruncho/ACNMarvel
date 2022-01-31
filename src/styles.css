@@ -7,6 +7,7 @@ body {
   background-image: url(/assets/bg.jpg);
   background-size: 75%;
   background-blend-mode: darken;
+  font-size: 16px !important;
 }
 
 accen-hero-profile > a {
@@ -37,12 +38,14 @@ h1 {
   padding: 10px;
   border-radius: 2px;
   border: 10px solid #ffffff;
+  border-bottom: 70px solid #ffffff;
   margin-bottom: 20px;
   background-position: center;
   background-size: cover;
   display: block;
   box-shadow: 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   transition: all 0.2s ease;
+  text-decoration: none !important;
 }
 
 .hero-entry:hover {
@@ -57,13 +60,15 @@ h1 {
 }
 
 .hero-entry > span {
+  position: relative;
   text-decoration: none;
-  color: #ffffff;
+  color: #141414;
   text-align: center;
   display: block;
   font-size: 20px;
-  font-family: "Anton", sans-serif;
-  background-color: rgba(0, 0, 0, 0.5);
+  font-family: "Bangers", cursive;
+  top: 110%;
+  line-height: 1;
 }
 
 .paginator {
@@ -71,6 +76,7 @@ h1 {
   text-align: center;
   background-color: rgba(255, 255, 255, 1);
   margin-bottom: 25px;
+  font-family: "Bangers", cursive;
 }
 
 .paginator .paginator-prev {
@@ -102,6 +108,7 @@ h1 {
   transform: rotate(2deg);
   padding: 6px;
   border: 1px solid #000000;
+  font-family: "Bangers", cursive;
 }
 
 .heroe-profile img {
@@ -112,6 +119,10 @@ h1 {
 
 .heroe-profile .goback {
   float: left;
+}
+.btn,
+.form-control {
+  font-family: "Bangers", cursive;
 }
 
 /*-------------- modal stuff*/

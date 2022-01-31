@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
 
 import { Heroe } from '../../classes/heroe';
 import { HeroesService } from '../../services/heroes.service';
@@ -18,21 +20,35 @@ export class HeroProfileComponent implements OnInit {
   public heroe: Heroe;
   public question_modal: string;
   public team: string = "";
+  public heroeSubscription: Subscription;
+  public heroes$: Observable<Array<Heroe>>;
 
-  constructor(private route: ActivatedRoute, private heroesService: HeroesService, private _location: Location) { }
+  constructor(private route: ActivatedRoute, private heroesService: HeroesService, private location: Location, private store: Store<{ heroes: Array<Heroe> }>) { }
 
   ngOnInit(): void {
+    this.heroes$ = this.store.select('heroes');
+    this.heroeSubscription = this.heroes$.subscribe((data: any) => {
+      if (Object.keys(data.heroProfile).length !== 0) {
+        this.team = data.heroProfile.team;
+        this.heroesService.setHeroeTeam(data);
+      }
+    });
     this.route.params.subscribe(params => {
       this.id = params.id;
-      this.heroesService.getHeroe(this.id).subscribe(data => {
-        const temp = data.data.results[0];
-        this.heroe = new Heroe(temp.id, temp.name, temp.description, temp.modified, temp.thumbnail, temp.resourceURI, this.heroesService.getTeamColor(temp.id));
+      this.heroesService.getHeroe(this.id).subscribe((data: any) => {
+        const temp = data.response.results[0];
+        this.team = temp.team;
+        this.heroe = new Heroe(temp.id, temp.name, temp.description, temp.modified, temp.thumbnail, temp.resourceURI, temp.team);
       });
     });
   }
 
+  ngOnDestroy(): void {
+    this.heroeSubscription.unsubscribe();
+  }
+
   goBack() {
-    this._location.back();
+    this.location.back();
   }
 
   launchModal(): void {
@@ -44,5 +60,4 @@ export class HeroProfileComponent implements OnInit {
     this.team = team;
     this.heroesService.teams.set(this.heroe.id, this.team);
   }
-
 }

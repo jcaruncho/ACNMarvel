@@ -3,8 +3,13 @@
   <div class="row">
     <form (ngSubmit)="submitSearch()">
       <div class="form-group col-xs-12">
-        <input type="text" [(ngModel)]="searchString" name="searchString" class="form-control" id="search"
-          placeholder="Búsqueda de super-héroe">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-search"></span>
+          </span>
+          <input type="text" [(ngModel)]="searchString" name="searchString" class="form-control" id="search"
+            autocomplete="off" placeholder="Búsqueda de super-héroe">
+        </div>
       </div>
     </form>
     <div *ngFor="let heroe of heroesList" class="col-xs-12 col-sm-6 col-md-3">

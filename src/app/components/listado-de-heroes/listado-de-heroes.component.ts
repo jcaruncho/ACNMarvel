@@ -23,7 +23,7 @@ export class ListadoDeHeroesComponent implements OnInit {
   ngOnInit(): void {
     this.heroesList$ = this.store.select('heroes');
     this.heroesSubscription = this.heroesList$.subscribe(({ heroes }: any) => {
-      heroes ? this.heroesList = heroes.data : '';
+      heroes ? this.heroesList = heroes : '';
     });
     this.heroesService.getHeroes();
   }
@@ -46,5 +46,5 @@ export class ListadoDeHeroesComponent implements OnInit {
 
   getHeroesService() {
     return { ...this.heroesService }
-  };
+  }
 }

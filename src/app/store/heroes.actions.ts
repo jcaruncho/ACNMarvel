@@ -3,5 +3,10 @@ import { Heroe } from '../classes/heroe';
 
 export const setHeroes = createAction(
     '[Heroes] setHeroes',
-    props<{ data: Array<Heroe> }>()
+    props<{ data }>()
+);
+
+export const setTeamHero = createAction(
+    '[Hero Component] AddHeroes',
+    props<{ data }>()
 );
