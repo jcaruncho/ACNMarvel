@@ -8,8 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { heroesReducer } from './store/heroes.reducer';
 
-import { HeroesService } from './services/heroes.service';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +18,6 @@ import { HeroesService } from './services/heroes.service';
     HttpClientModule,
     StoreModule.forRoot({ heroes: heroesReducer })
   ],
-  providers: [HeroesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

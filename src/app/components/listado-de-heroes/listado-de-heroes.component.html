@@ -20,10 +20,10 @@
       </a>
     </div>
     <div class="paginator col-xs-12">
-      <a class="paginator-prev" (click)="prevPage()" *ngIf="getHeroesService().page > 0">Prev</a>
-      Página {{getHeroesService().page + 1}} de {{getHeroesService().total}}
+      <a class="paginator-prev" (click)="prevPage()" *ngIf="getHeroesServiceData().page > 0">Prev</a>
+      Página {{getHeroesServiceData().page + 1}} de {{getHeroesServiceData().total}}
       <a class="paginator-next" (click)="nextPage()"
-        *ngIf="getHeroesService().page < getHeroesService().total - 1">Next</a>
+        *ngIf="getHeroesServiceData().page < getHeroesServiceData().total - 1">Next</a>
     </div>
   </div>
 </div>

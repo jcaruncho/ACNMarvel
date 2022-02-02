@@ -5,9 +5,7 @@ import { Store } from '@ngrx/store';
 import { Heroe } from '../classes/heroe';
 import { setHeroes } from '../store/heroes.actions';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class HeroesService {
 
   private protocol = 'http:';
@@ -53,9 +51,9 @@ export class HeroesService {
     });
   }
 
-  setHeroeTeam(hero) {
+  setHeroeTeam(heroProfile) {
     const url = this.protocol + this.ApiUrl + 'setHeroTeam';
-    this.http.post<any>(url, hero.heroProfile).subscribe(data => {
+    this.http.post<any>(url, heroProfile).subscribe(data => {
       console.log(data);
     });
   }

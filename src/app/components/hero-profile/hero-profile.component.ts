@@ -8,7 +8,7 @@ import { Heroe } from '../../classes/heroe';
 import { HeroesService } from '../../services/heroes.service';
 
 @Component({
-  selector: 'app-hero-profile',
+  selector: 'nf-hero-profile',
   templateUrl: './hero-profile.component.html',
   styleUrls: ['./hero-profile.component.css']
 })
@@ -27,10 +27,10 @@ export class HeroProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.heroes$ = this.store.select('heroes');
-    this.heroeSubscription = this.heroes$.subscribe((data: any) => {
-      if (Object.keys(data.heroProfile).length !== 0) {
-        this.team = data.heroProfile.team;
-        this.heroesService.setHeroeTeam(data);
+    this.heroeSubscription = this.heroes$.subscribe(({ heroProfile }: any) => {
+      if (Object.keys(heroProfile).length !== 0) {
+        this.team = heroProfile.team;
+        this.heroesService.setHeroeTeam(heroProfile);
       }
     });
     this.route.params.subscribe(params => {
@@ -47,7 +47,7 @@ export class HeroProfileComponent implements OnInit {
     this.heroeSubscription.unsubscribe();
   }
 
-  goBack() {
+  goBack(): void {
     this.location.back();
   }
 

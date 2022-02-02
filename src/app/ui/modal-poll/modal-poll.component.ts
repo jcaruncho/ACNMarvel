@@ -6,7 +6,7 @@ import { Heroe } from '../../classes/heroe';
 import { setTeamHero } from '../../store/heroes.actions';
 
 @Component({
-  selector: 'app-modal-poll',
+  selector: 'nf-modal-poll',
   templateUrl: './modal-poll.component.html',
   styleUrls: ['./modal-poll.component.css']
 })

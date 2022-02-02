@@ -19,15 +19,12 @@ export const initialState: stateType = {
 export const heroesReducer = createReducer(
     initialState,
     on(setHeroes, (state, { type, data }) => {
-        console.log(state);
         return {
             ...state,
             heroes: data
         }
     }),
     on(setTeamHero, (state, { type, data }) => {
-        console.log(state);
-        console.log(data);
         return {
             ...state,
             heroProfile: data
